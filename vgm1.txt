@@ -1,0 +1,2 @@
+theta_r theta_s n a h0 h1 kf beta C_w*rho*g lambda Ct D[0] D[1] D[2] D[3]
+0.098 0.422 1.436 0.005 0.00 0.30 1.37e-07 -0.678 1e-3 3.57 2.2e6 1e-9 1e-9 1e-9 1e-9
