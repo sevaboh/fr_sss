@@ -1588,7 +1588,10 @@ public:
 				MM[O1]=UU[O1];
 		    // n
 			// upper boundary condition
-			MM[O2]=UU[O2];
+			if (testing_mode==0)
+				MM[O2]=UU[O2]-UU[O2+1];
+			else
+				MM[O2]=UU[O2];
 			// bottom boundary condition
 			MM[N]=UU[N];
 			
@@ -1732,7 +1735,8 @@ public:
 			if (steady_state==1)
 				RP[O1]=0;
 			// n
-			RP[O2]=RP[N]=sigma;
+			RP[O2]=0.0;
+			RP[N]=sigma;
 			if (testing_mode==1)
 			{
 				RP[O2]=testing_n(0,T);
@@ -1791,7 +1795,7 @@ public:
 	{
 		fprintf(out,"t(days) %g tau(seconds) %g Z: ",(T-tau)/86400.0,tau);
 		fprintf(out2,"t(days) %g tau(seconds) %g V: ",(T-tau)/86400.0,tau);
-		fprintf(out3,"t(days) %g tau(seconds) %g V: ",(T-tau)/86400.0,tau);
+		fprintf(out3,"t(days) %g tau(seconds) %g n: ",(T-tau)/86400.0,tau);
 		if (T==tau)
 		{
 		    for (int i=0;i<=N1;i+=zoutstep)
@@ -2091,3 +2095,4 @@ int main(int argc,char **argv)
 	Zsolver->output_solution();
 	return 0;
 }
+
